@@ -1,5 +1,5 @@
 ## Sidebar Always Loaded  
-The idea for this is to have the sidebar always ready to show its content, without reloading it everytime we hit the sidebar button. This way we have always the content ready. Otherwise, the default Firefox behavior is that everytime you open the sidebar, its content have to load, every time again!
+The idea for this is to have the sidebar always ready to show its content, without reloading it everytime we hit the sidebar button. This way we have always the content ready. Otherwise, the default Firefox behavior is that everytime you open the sidebar its content have to load, every time again!
 
 For exameple when having this script: 
  * TreeStyleTab addon doesn't have to load everytime you open the sidebar. It is already showing the tabs.
@@ -18,6 +18,13 @@ If you don't have it, just create that. It is located inside your Firefox profil
 Restart Firefox. `about:profiles` → `Restart normally`
 
 ----
+**What are those files?**
+ * `userChrome.css` - This file is used to add your own CSS rules to the Firefox UI, here is used to inject the next file:
+ * `userChrome.js`- This .js make load any other .uc.js and .uc.xul files presented in the folder.
+ * `salf.uc.js` - This SAL-Firefox script itself.
+ 
+ Firefox load `userChrome.css` that make load `userChrome.js` which lead to load `salf.uc.js`.
+
 
 **Note!**
 This script was made under Firefox version 75.0a1 (2020-02-28).
