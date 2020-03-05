@@ -1,3 +1,5 @@
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Screenshot](https://i.imgur.com/F1StTk6.gif)
+
 ## Sidebar Always Loaded  
 The idea for this is to have the sidebar always ready to show its content, without reloading it everytime we hit the sidebar button. This way we have always the content ready. Otherwise, the default Firefox behavior is that everytime you open the sidebar its content have to load, every time again!
 
