@@ -20,14 +20,6 @@ If you don't have it, just create that. It is located inside your Firefox profil
 Restart Firefox. `about:profiles` → `Restart normally`
 
 ----
-**What are those files?**
- * `userChrome.css` - Used to add your own CSS rules to the Firefox UI. Here its used to inject the next file:
- * `userChrome.js`- This .js does load any other .uc.js and .uc.xul files presented in the folder.
- * `salf.uc.js` - This SAL-Firefox script itself.
- 
- Firefox load `userChrome.css` that make load `userChrome.js` which lead to load `salf.uc.js`.
- 
-----
 ### The previous version
 
 This is a re-do of my other script [alfs](https://github.com/thepante/alfs-firefox).
