@@ -3,7 +3,7 @@
 ## Sidebar Always Loaded  
 The idea for this is to have the sidebar always ready to show its content, without reloading it everytime we hit the sidebar button. This way we have always the content ready. Otherwise, the default Firefox behavior is that everytime you open the sidebar its content have to load, every time again!
 
-For exameple when having this script: 
+For example when having this script: 
  * TreeStyleTab addon doesn't have to load everytime you open the sidebar. It is already showing the tabs.
  * Bookmarks panel doesn't "lost position". You can search for something there, close the sidebar and open it again to see the search its still there.
 
