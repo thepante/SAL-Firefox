@@ -21,8 +21,8 @@ Restart Firefox. `about:profiles` → `Restart normally`
 
 ----
 **What are those files?**
- * `userChrome.css` - This file is used to add your own CSS rules to the Firefox UI, here is used to inject the next file:
- * `userChrome.js`- This .js make load any other .uc.js and .uc.xul files presented in the folder.
+ * `userChrome.css` - Used to add your own CSS rules to the Firefox UI. Here its used to inject the next file:
+ * `userChrome.js`- This .js does load any other .uc.js and .uc.xul files presented in the folder.
  * `salf.uc.js` - This SAL-Firefox script itself.
  
  Firefox load `userChrome.css` that make load `userChrome.js` which lead to load `salf.uc.js`.
