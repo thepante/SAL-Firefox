@@ -1,11 +1,11 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Screenshot](https://i.imgur.com/F1StTk6.gif)
 
 ## Sidebar Always Loaded  
-The idea for this is to have the sidebar always ready to show its content, without reloading it everytime we hit the sidebar button. This way we have always the content ready. Otherwise, the default Firefox behavior is that everytime you open the sidebar its content have to load, every time again!
+This script makes the sidebar to be always been ready to show its content, without the need to load its content each time we open the sidebar panel. The panel is just hiding, but without discard its content. Otherwise, the default Firefox behavior is that each time you open the sidebar is that the content has to load again.
 
-For example when having this script: 
- * TreeStyleTab addon doesn't have to load everytime you open the sidebar. It is already showing the tabs.
- * Bookmarks panel doesn't "lost position". You can search for something there, close the sidebar and open it again to see the search its still there.
+For example when having this script:
+* TreeStyleTab or any other addon, doesn't needs to load every time you open the sidebar. You open it, and there is the content of the addon being displayed without the need to re-load.
+* Bookmarks or history panels doesn't "lost position". You can search for something there, open a folder, o whatever, then close the sidebar and open it again, you'll see that the panel is displaying the same content as when you closed it.
 
 ## How to get it
 1. [**Download salf-userchrome-\*.zip**](https://github.com/thepante/SAL-Firefox/releases/latest)
@@ -23,9 +23,9 @@ Restart Firefox. `about:profiles` → `Restart normally`
 ### The previous version
 
 This is a re-do of my other script [alfs](https://github.com/thepante/alfs-firefox).
-Why? The previous one didn't work anymore in newer versions of Firefox. So I had to do it again. At the moment it is more basic and without added options.
+Why? The previous one didn't work anymore in newer versions of Firefox. So I had to do it again. At the moment this version only has the default style (no "floating mode"), nor require external settings, so you can adjust width and position within Firefox inbuilt options.
 
-This is a more clean work, a better aproach, but it losts the floating style.
+This is a lot cleaner work, a better aproach, but we lost the floating style.
 
 | option              | alfs | salf                                                                                                                    |  
 | :---             | ---:    | :---                                                                                                                    |  
