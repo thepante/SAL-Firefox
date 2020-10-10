@@ -1,7 +1,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Screenshot](https://i.imgur.com/F1StTk6.gif)
 
 ## Sidebar Always Loaded  
-This script makes the sidebar to be always been ready to show its content, without the need to load its content each time we open the sidebar panel. The panel is just hiding, but without discard its content. Otherwise, the default Firefox behavior is that each time you open the sidebar is that the content has to load again.
+This script makes the sidebar to be always been ready to show its content, without the need to load it again each time we open the sidebar panel. The panel is just hiding, but without discard its content. Otherwise, the default Firefox behavior is that each time you open the sidebar is that the content has to load again.
 
 For example when having this script:
 * TreeStyleTab or any other addon, doesn't needs to load every time you open the sidebar. You open it, and there is the content of the addon being displayed without the need to re-load.
