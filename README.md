@@ -1,6 +1,6 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Screenshot](https://i.imgur.com/F1StTk6.gif)
 
-## Sidebar Always Loaded  
+## Sidebar Always Loaded
 This script makes the sidebar to be always been ready to show its content, without the need to load it again each time we open the sidebar panel. The panel is just hiding, but without discard its content. Otherwise, the default Firefox behavior is that each time you open the sidebar is that the content has to load again.
 
 For example when having this script:
@@ -12,7 +12,7 @@ For example when having this script:
 2. Copy its files to your `chrome` folder
 3. Reopen Firefox
 
-> **Note:** `chrome` its a folder that the user can use to customize the Firefox interface. [Read more here](http://kb.mozillazine.org/index.php?title=UserChrome.css).  
+> **Note:** `chrome` its a folder that the user can use to customize the Firefox interface. [Read more here](http://kb.mozillazine.org/index.php?title=UserChrome.css).
 If you don't have it, just create that. It is located inside your Firefox profile folder:
 
 > In your Firefox address bar type and enter to `about:support`. There is 'Profile Directory' information, click 'Open Directory'. That's where the `chrome` folder should be located at.
@@ -27,13 +27,13 @@ Why? The previous one didn't work anymore in newer versions of Firefox. So I had
 
 This is a lot cleaner work, a better aproach, but we lost the floating style.
 
-| option              | alfs | salf                                                                                                                    |  
-| :---             | ---:    | :---                                                                                                                    |  
-| position         | in prefs.uc.js | Firefox inbuilt option                                                                                        |  
-| width            | fixed in prefs.uc.js  | Firefox inbuilt, adjustable    
+| option              | alfs | salf                                                                                                                    |
+| :---             | ---:    | :---                                                                                                                    |
+| position         | in prefs.uc.js | Firefox inbuilt option                                                                                        |
+| width            | fixed in prefs.uc.js  | Firefox inbuilt, adjustable
 | styles           | `floating` and `classic` | only `classic`
 | pip for videos | yes - own PiP function | none (firefox now have inbuilt PiP)
 | shortcut       | yes - custom       | none - pending to-do
 
 **Note!**
-This script was made under Firefox version 75.0a1 (2020-02-28).
+This script was made under Firefox Nightly version 83.0a1 (2020-10-12).
