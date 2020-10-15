@@ -1,101 +1,80 @@
 // ==UserScript==
 // @name           salf.uc.js
 // @include        main
-// @version        2.0
+// @version        2.5
 // @note           u/thepante
 // ==/UserScript==
 
-var visualFeedback = false; // 'true' to check if it is being loaded correctly
+const debugMode = false;
 
-var salf = document.getElementById("sidebar-box");
-var browser = document.getElementById("browser");
-var splitter = document.getElementById("sidebar-splitter");
-var sbCloseButton = document.getElementById("sidebar-close");
-var salfClass = salf.className;
-var splitterClass = splitter.className;
+const browser = document.getElementById("browser");
+const sidebarBox = document.getElementById("sidebar-box");
+const sidebarSplitter = document.getElementById("sidebar-splitter");
+const sidebarBtnClose = document.getElementById("sidebar-close");
 
-// Add base rule //
-var style = document.createElement('style');
-style.innerHTML = `.closeit {display: none;}`;
-document.head.appendChild(style);
+let sidebarButton;
+let isSidebarOpen = false;
+hideSidebar();
 
-// Start values //
-sbVisible=false;
-salf.checked=true;
-salf.hidden=true;
-salf.className = salfClass + ' closeit';
-splitter.className = splitterClass + ' closeit';
+function showSidebar() {
+  sidebarBox.style.display = 'inherit';
+  sidebarSplitter.style.display = 'inherit';
+  isSidebarOpen = true;
+  sidebarBox.hidden = false;
+  sidebarButton.checked = true;
 
-// Declaring styles - only classic ATM //
-var styleFloat = {
-  '#sidebar-box': 'position: absolute !important; max-height: 60vh !important;-moz-box-ordinal-group: 4;', 
-//  '.browserStack': 'position: absolute !important; width: 100vw; height: 100vw;',
-  '#appcontent': '-moz-box-ordinal-group: 2;display: inline-flex;position: absolute;height: 94% !important;',
-  '#tabbrowser-tabbox': 'width: 100vw !important;',
-};
+  if (debugMode) {
+    console.log('sidebar → opened');
+    browser.style.borderTopColor = 'green';
+  };
+}
 
-var styleClassic = {
-  // doesn't require
-};
+function hideSidebar() {
+  sidebarBox.style.display = 'none';
+  sidebarSplitter.style.display = 'none';
+  isSidebarOpen = false;
+  sidebarBox.hidden = true;
 
+  // under IF because the first call at L17, sidebarButton is still undefined
+  if (sidebarButton) sidebarButton.checked = false;
 
-// Style switcher //
-var styled = styleClassic;
-Object.entries(styled).forEach(([key, value]) => {
-   var ident = document.querySelector(key);
-   ident.setAttribute("style", value);
+  if (debugMode) {
+    console.log('sidebar → closed');
+    browser.style.borderTopColor = 'violet';
+  };
+}
+
+// Button functionality
+const buttonBehavior = () => isSidebarOpen ? hideSidebar() : showSidebar();
+
+window.addEventListener('load', function() {
+  sidebarButton = document.getElementById('sidebar-button');
+
+  // it's not fancy, but this fixes 2 bugs: button appears as checked when shouldn't (at start).
+  // that could be fixed changing the previous window listener, but can't! has to be 'load' because
+  // if not, that would introduce another bug: autocloses when changing sidebar (content) panel!
+  window.addEventListener('DOMContentLoaded', function() {
+    if (!isSidebarOpen) sidebarButton.checked = false;
+  });
+
+  // Toolbar button
+  sidebarButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    buttonBehavior();
+  });
+
+  // Close button
+  sidebarBtnClose.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    buttonBehavior();
+  });
+
+  if (debugMode) sidebarButton.style.border = '1px solid yellow';
 });
 
-// Visual reference that js is loaded //
-if (visualFeedback == true) {
-  browser.setAttribute("style", "border-top: 2px solid brown;");
-}
+// visual reference that the script just loaded
+if (debugMode) browser.style.borderTop = '2px solid brown';
 
-// Button functionality //
-function buttonBehavior() {
-  if (sbVisible == false) {
-        sbIconButton.checked=true;
-        salf.className = salfClass + ' openit';
-        splitter.className = splitterClass;
-        salf.checked=true;
-        salf.hidden=false;
-        sbVisible = true;
-        console.log("salf - sb opened");
-        if (visualFeedback == true) {browser.setAttribute("style", "border-top: 2px solid green;");}
-    }
-    else {
-        sbIconButton.checked=false;
-        salf.className = salfClass + ' closeit';
-        splitter.className = splitterClass + ' closeit';
-        salf.checked=true;
-        salf.hidden=true;
-        sbVisible = false;
-        console.log("salf - sb closed");
-        if (visualFeedback == true) {browser.setAttribute("style", "border-top: 2px solid violet;");}
-    }
-}
-
-// Delayed to avoid getting button as null (?), then apply //
-setTimeout(function() {iconbtn();}, 500);
-function iconbtn() {
-  sbIconButton = document.getElementById("sidebar-button");
-  sbIconButton.checked=false;
-
-  if (visualFeedback == true) {  // check its working
-    sbIconButton.setAttribute("style", "border:1px solid yellow !important;");
-  }
-
-  sbIconButton.addEventListener('click', function(e){ // Toolbar button
-      e.preventDefault();
-      buttonBehavior();
-      //e.stopPropagation();
-  });
-
-  sbCloseButton.addEventListener('click', function(e){ // Close (X) button
-      e.preventDefault();
-      buttonBehavior();
-      //e.stopPropagation();
-  });
-}
-
-console.log("salf - load ok");
+console.log('salf → loaded ok');
