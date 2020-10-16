@@ -57,19 +57,12 @@ window.addEventListener('load', function() {
     if (!isSidebarOpen) sidebarButton.checked = false;
   });
 
-  // Toolbar button
-  sidebarButton.addEventListener('click', function(e) {
+  // replace buttons behavior
+  [sidebarButton, sidebarBtnClose].forEach(e => e.addEventListener('click', function(e) {
     e.preventDefault();
     e.stopPropagation();
     buttonBehavior();
-  });
-
-  // Close button
-  sidebarBtnClose.addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    buttonBehavior();
-  });
+  }));
 
   if (debugMode) sidebarButton.style.border = '1px solid yellow';
 });
