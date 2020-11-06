@@ -5,12 +5,17 @@
 // @note           u/thepante
 // ==/UserScript==
 
-const debugMode = false;
+// Settings
+const hide_sidebar_header = false;
+const debug_mode = false;
+
+/* - - - - - - - - - - - - - -  */
 
 const browser = document.getElementById("browser");
 const sidebarBox = document.getElementById("sidebar-box");
 const sidebarSplitter = document.getElementById("sidebar-splitter");
 const sidebarBtnClose = document.getElementById("sidebar-close");
+const sidebarHeader = document.getElementById("sidebar-header");
 
 let sidebarButton;
 let isSidebarOpen = false;
@@ -23,7 +28,7 @@ function showSidebar() {
   sidebarBox.hidden = false;
   sidebarButton.checked = true;
 
-  if (debugMode) {
+  if (debug_mode) {
     console.log('sidebar → opened');
     browser.style.borderTopColor = 'green';
   };
@@ -38,7 +43,7 @@ function hideSidebar() {
   // under IF because the first call at L17, sidebarButton is still undefined
   if (sidebarButton) sidebarButton.checked = false;
 
-  if (debugMode) {
+  if (debug_mode) {
     console.log('sidebar → closed');
     browser.style.borderTopColor = 'violet';
   };
@@ -49,6 +54,8 @@ const buttonBehavior = () => isSidebarOpen ? hideSidebar() : showSidebar();
 
 window.addEventListener('load', function() {
   sidebarButton = document.getElementById('sidebar-button');
+
+  if (hide_sidebar_header) sidebarHeader.style.display = 'none';
 
   // it's not fancy, but this fixes 2 bugs: button appears as checked when shouldn't (at start).
   // that could be fixed changing the previous window listener, but can't! has to be 'load' because
@@ -64,10 +71,10 @@ window.addEventListener('load', function() {
     buttonBehavior();
   }));
 
-  if (debugMode) sidebarButton.style.border = '1px solid yellow';
+  if (debug_mode) sidebarButton.style.border = '1px solid yellow';
 });
 
 // visual reference that the script just loaded
-if (debugMode) browser.style.borderTop = '2px solid brown';
+if (debug_mode) browser.style.borderTop = '2px solid brown';
 
 console.log('salf → loaded ok');
