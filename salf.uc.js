@@ -13,7 +13,7 @@ const float_mode = {
     height: '600px',
     transparent: false,
     slide: true,
-    fade: false,
+    fade: true,
   }
 };
 
@@ -76,7 +76,7 @@ const style_float = `
       ? 'right: calc(var(--sidebar-width) * -1);'
       : 'display: none;'
     }
-    ${ !float_mode.config.fade &&
+    ${ float_mode.config.fade &&
       'opacity: 0;'
     }
   }
