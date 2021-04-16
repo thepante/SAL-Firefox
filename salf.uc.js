@@ -17,6 +17,11 @@ const float_mode = {
   }
 };
 
+const shortcut = {
+  modifier: 'ctrl',
+  key: 'e',
+}
+
 const hide_sidebar_header = false;
 
 
@@ -130,6 +135,15 @@ window.addEventListener('load', function() {
     })
   );
 });
+
+// Shortcut functionality
+document.onkeydown = function(e) {
+  if (e[shortcut.modifier + 'Key'] && e.key === shortcut.key) {
+    e.preventDefault();
+    e.stopPropagation();
+    buttonBehavior();
+  }
+};
 
 console.log('salf → loaded ok');
 
