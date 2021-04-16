@@ -18,6 +18,7 @@ const float_mode = {
 };
 
 const shortcut = {
+  enabled: false,
   modifier: 'ctrl',
   key: 'e',
 }
@@ -137,13 +138,15 @@ window.addEventListener('load', function() {
 });
 
 // Shortcut functionality
-document.onkeydown = function(e) {
-  if (e[shortcut.modifier + 'Key'] && e.key === shortcut.key) {
-    e.preventDefault();
-    e.stopPropagation();
-    buttonBehavior();
-  }
-};
+if (shortcut.enabled) {
+  document.onkeydown = function(e) {
+    if (e[shortcut.modifier + 'Key'] && e.key === shortcut.key) {
+      e.preventDefault();
+      e.stopPropagation();
+      buttonBehavior();
+    }
+  };
+}
 
 console.log('salf → loaded ok');
 
