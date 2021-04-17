@@ -11,6 +11,7 @@ const float_mode = {
   config: {
     width: '280px',
     height: '600px',
+    position: 'right',
     shadow_intst: 0.12,
     transparent: false,
     // -- slide settings
@@ -54,7 +55,7 @@ const style_float = `
     position: absolute;
     display: block;
     float: right;
-    right: 0;
+    ${float_mode.config.position}: 0;
     width: var(--sidebar-width) !important;
     height: var(--sidebar-height) !important;
     box-shadow: rgba(0, 0, 0, ${float_mode.config.shadow_intst}) 5px 15px 60px 42px;
@@ -68,6 +69,7 @@ const style_float = `
   #sidebar-box #sidebar {
     display: block;
     width: 100% !important;
+    max-width: 100% !important;
     height: ${ hide_sidebar_header
       ? 'var(--sidebar-height) !important'
       : 'calc(var(--sidebar-height) - 42px) !important'
@@ -76,7 +78,7 @@ const style_float = `
   #sidebar-box.hide {
     box-shadow: none;
     ${ float_mode.config.slide
-      ? 'right: calc(var(--sidebar-width) * -1);'
+      ? `${float_mode.config.position}: calc(var(--sidebar-width) * -1);`
       : 'display: none;'
     }
     ${ float_mode.config.fade &&
