@@ -11,9 +11,12 @@ const float_mode = {
   config: {
     width: '280px',
     height: '600px',
+    shadow_intst: 0.12,
     transparent: false,
+    // -- slide settings
     slide: true,
     fade: true,
+    speed: 0.2,
   }
 };
 
@@ -47,14 +50,14 @@ const style_float = `
   #sidebar-box {
     --sidebar-width: ${float_mode.config.width};
     --sidebar-height: ${float_mode.config.height};
-    transition: all .2s ease-in-out;
+    transition: all ${float_mode.config.speed}s ease-in-out;
     position: absolute;
     display: block;
     float: right;
     right: 0;
     width: var(--sidebar-width) !important;
     height: var(--sidebar-height) !important;
-    box-shadow: rgba(0, 0, 0, 0.12) 5px 15px 60px 42px;
+    box-shadow: rgba(0, 0, 0, ${float_mode.config.shadow_intst}) 5px 15px 60px 42px;
     z-index: 100;
     ${ float_mode.config.transparent
       ? `opacity: .8;
