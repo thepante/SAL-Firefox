@@ -46,11 +46,11 @@ const style_classic = `
   #sidebar-box.hide + #sidebar-splitter { display: none; }
 `;
 
-const style_float = `
+const style_float = () => `
   #sidebar-splitter { display: none; }
   #sidebar-box {
     --sidebar-width: ${float_mode.config.width};
-    --sidebar-height: ${float_mode.config.height};
+    --sidebar-height: calc(${float_mode.config.height} - ${window.innerHeight - browser.clientHeight}px);
     transition: all ${float_mode.config.speed}s ease-in-out;
     position: absolute;
     display: block;
@@ -70,10 +70,7 @@ const style_float = `
     display: block;
     width: 100% !important;
     max-width: 100% !important;
-    height: ${ hide_sidebar_header
-      ? 'var(--sidebar-height) !important'
-      : 'calc(var(--sidebar-height) - 42px) !important'
-    };
+    height: calc(100% ${!hide_sidebar_header ? `- 42px` : ''}) !important;
   }
   #sidebar-box.hide {
     box-shadow: none;
@@ -88,16 +85,20 @@ const style_float = `
 `;
 
 // Append stylesheet to the browser document
-try {
-  const s = document.createElement('style');
-  s.setAttribute('type', 'text/css');
-  s.setAttribute('id', 'salf');
-  s.appendChild(document.createTextNode(
-    float_mode.enabled ? style_float : style_classic
-  ));
-  document.head.appendChild(s);
-} catch (error) {
-  console.debug(error);
+// In a function to call later on. Thats because the float stylesheet is
+// also in a func to call and define when info about top offset is correct
+function setStylesheet() {
+  try {
+    const s = document.createElement('style');
+    s.setAttribute('type', 'text/css');
+    s.setAttribute('id', 'salf');
+    s.appendChild(document.createTextNode(
+      float_mode.enabled ? style_float() : style_classic
+    ));
+    document.head.appendChild(s);
+  } catch (error) {
+    console.debug(error);
+  }
 }
 
 function showSidebar() {
@@ -130,6 +131,7 @@ window.addEventListener('load', function() {
     if (!isSidebarOpen) sidebarButton.checked = false;
   });
 
+  setStylesheet();
   hideSidebar();
 
   // replace buttons vanilla behavior
