@@ -7,17 +7,17 @@
 
 // Settings
 const float_mode = {
-  enabled: false,
+  enabled: true,
   config: {
     width: '280px',
-    height: '600px',
+    height: '100%',
     position: 'right',
     shadow_intst: 0.12,
     transparent: false,
     // -- slide settings
     slide: true,
     fade: true,
-    speed: 0.2,
+    speed: 0.1,
   }
 };
 
