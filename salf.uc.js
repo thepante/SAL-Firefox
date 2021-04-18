@@ -25,6 +25,7 @@ const shortcut = {
   enabled: false,
   modifier: 'ctrl',
   key: 'e',
+  auto_close: true,
 }
 
 const hide_sidebar_header = false;
@@ -159,6 +160,13 @@ if (shortcut.enabled) {
       buttonBehavior();
     }
   };
+
+  // auto hide sidebar when modifier + click inside its content
+  if (shortcut.auto_close) {
+    sidebar.onclick = function(e) {
+      if (e[shortcut.modifier + 'Key']) hideSidebar();
+    }
+  }
 }
 
 console.log('salf → loaded ok');
