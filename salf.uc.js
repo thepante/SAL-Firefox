@@ -48,6 +48,11 @@ const style_classic = `
 
 const style_float = () => `
   #sidebar-splitter { display: none; }
+  ${ float_mode.config.height != '100%' ? `
+    #sidebar-box, #sidebar-box #sidebar {
+      border-bottom-${float_mode.config.position == 'right' ? 'left' : 'right'}-radius: 4px;
+    }
+  ` : ''}
   #sidebar-box {
     --sidebar-width: ${float_mode.config.width};
     --sidebar-height: calc(${float_mode.config.height} - ${window.innerHeight - browser.clientHeight}px);
