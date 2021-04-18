@@ -48,6 +48,7 @@ const style_classic = `
 
 const style_float = () => `
   #sidebar-splitter { display: none; }
+  #sidebar-header { width: 100% !important; }
   ${ float_mode.config.height != '100%' ? `
     #sidebar-box, #sidebar-box #sidebar {
       border-bottom-${float_mode.config.position == 'right' ? 'left' : 'right'}-radius: 4px;
