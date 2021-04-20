@@ -5,7 +5,8 @@
 // @note           github.com/thepante
 // ==/UserScript==
 
-// Settings
+/* - - - - - - - - - - -  SETTINGS  - - - - - - - - - - - - - - - */
+
 const float_mode = {
   enabled: true,
   config: {
@@ -33,6 +34,7 @@ const hide_sidebar_header = false;
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
+const sidebar = document.getElementById('sidebar');
 const sidebarBox = document.getElementById('sidebar-box');
 const sidebarBtnClose = document.getElementById('sidebar-close');
 const sidebarHeader = document.getElementById('sidebar-header');
