@@ -156,7 +156,7 @@ window.addEventListener('load', function() {
 // Shortcut functionality
 if (shortcut.enabled) {
   document.onkeydown = function(e) {
-    if (e[shortcut.modifier + 'Key'] && e.key === shortcut.key) {
+    if (e[shortcut.modifier + 'Key'] && e.key.toLowerCase() === shortcut.key.toLowerCase()) {
       e.preventDefault();
       e.stopPropagation();
       buttonBehavior();
