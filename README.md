@@ -48,8 +48,8 @@ You can hide it by toggling the `hide_sidebar_header` constant to `true`. This j
 | option      | type       | default value  | values
 | :---        | ---:       | ---:           | :--- |
 | enabled     | `Boolean`  | `false`        | `true`, `false`
-| modifier    | `String`   | `ctrl`         | `ctrl`, `alt`
-| key         | `String`   | `e`            | any valid key
+| modifier    | `String`   | `ctrl`         | `ctrl`, `alt`, `shift`, `meta`
+| key         | `String`   | `e`            | [any valid key](https://gist.github.com/thepante/2a72d4937f076dc6704ed0fbb3a4ca0c)
 | auto_close  | `Boolean`  | `true`         | `true`, `false`
 
 With those default values (if enabled) the sidebar toggles visibility by pressing <kbd>ctrl</kbd> + <kbd>e</kbd>.
