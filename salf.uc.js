@@ -145,7 +145,7 @@ window.addEventListener('load', function() {
 
   // replace buttons vanilla behavior
   [sidebarButton, sidebarBtnClose].forEach(
-    e => e.addEventListener('click', function(e) {
+    e => e && e.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
       buttonBehavior();
