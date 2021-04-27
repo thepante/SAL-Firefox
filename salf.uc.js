@@ -113,14 +113,14 @@ function setStylesheet() {
 function showSidebar() {
   isSidebarOpen = true;
   sidebarBox.hidden = false;
-  sidebarButton.checked = true;
+  sidebarButton && (sidebarButton.checked = true);
   sidebarBox.classList.remove('hide');
 }
 
 function hideSidebar() {
   isSidebarOpen = false;
   sidebarBox.hidden = true;
-  sidebarButton.checked = false;
+  sidebarButton && (sidebarButton.checked = false);
   sidebarBox.classList.add('hide');
 }
 
@@ -137,7 +137,7 @@ window.addEventListener('load', function() {
   // listener, but can't! has to be 'load' because if not, that would introduce
   // another bug: autocloses when changing sidebar (content) panel!
   window.addEventListener('DOMContentLoaded', function() {
-    if (!isSidebarOpen) sidebarButton.checked = false;
+    if (!isSidebarOpen && sidebarButton) sidebarButton.checked = false;
   });
 
   setStylesheet();
