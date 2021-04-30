@@ -26,6 +26,7 @@ Within this functionality there's a plus: Auto close. If the shortcut functional
 For example, that is useful for switching tabs: (I have tabs on the sidebar) I open it with the shortcut and keep pressing <kbd>ctrl</kbd> to click a tab to swith to. The sidebar closes and I'm in the clicked tab without having to press the shortcut key combo again.
 
 ## How to install it
+**Note that it requires to have an user script loader:** [You can check the steps here](https://github.com/thepante/setup/wiki/How-to-use-Firefox-'userChrome'-scripts).
 1. [**Download salf-userchrome.zip**](https://github.com/thepante/SAL-Firefox/releases/latest/download/salf-userchrome.zip)
 2. Copy its files to your profile's `chrome` folder
 3. Restart Firefox
