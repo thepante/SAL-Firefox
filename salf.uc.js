@@ -127,18 +127,12 @@ function hideSidebar() {
 // Button functionality
 const buttonBehavior = () => isSidebarOpen ? hideSidebar() : showSidebar();
 
-window.addEventListener('load', function() {
+// Add salf behavior
+const apply = function() {
   sidebarButton = document.getElementById('sidebar-button');
 
   if (hide_sidebar_header) sidebarHeader.style.display = 'none';
-
-  // it's not fancy, but this fixes 2 bugs: button appears as checked when
-  // shouldn't (at start). that could be fixed changing the previous window
-  // listener, but can't! has to be 'load' because if not, that would introduce
-  // another bug: autocloses when changing sidebar (content) panel!
-  window.addEventListener('DOMContentLoaded', function() {
-    if (!isSidebarOpen && sidebarButton) sidebarButton.checked = false;
-  });
+  if (!isSidebarOpen && sidebarButton) sidebarButton.checked = false;
 
   setStylesheet();
   hideSidebar();
@@ -151,7 +145,12 @@ window.addEventListener('load', function() {
       buttonBehavior();
     })
   );
-});
+
+  // remove listener to avoid being fired again after panel content is changed
+  window.removeEventListener('DOMContentLoaded', apply);
+}
+
+window.addEventListener('DOMContentLoaded', apply);
 
 // Shortcut functionality
 if (shortcut.enabled) {
