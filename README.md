@@ -28,7 +28,7 @@ For example, that is useful for switching tabs: (I have tabs on the sidebar) I o
 ## How to install it
 **Note that it requires to have an user script loader:** [You can check the steps here](https://github.com/thepante/setup/wiki/How-to-use-Firefox-'userChrome'-scripts).
 1. [**Download salf-userchrome.zip**](https://github.com/thepante/SAL-Firefox/releases/latest/download/salf-userchrome.zip)
-2. Copy its files to your profile's `chrome` folder
+2. Copy the file `salf.uc.js` to your profile's `chrome` folder
 3. Restart Firefox
 
 > **Note:** `chrome` its a folder that the user can use to customize the Firefox interface. [Read more here](http://kb.mozillazine.org/index.php?title=UserChrome.css).
