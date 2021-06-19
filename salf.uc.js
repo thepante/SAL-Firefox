@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           salf.uc.js
 // @include        main
-// @version        3.2
+// @version        3.4
 // @note           github.com/thepante
 // ==/UserScript==
 
@@ -15,10 +15,17 @@ const float_mode = {
     position: 'right',
     shadow_intst: 0.12,
     transparent: false,
-    // -- slide settings
+    // -- sliding settings
     slide: true,
     fade: true,
     speed: 0.1,
+    // -- partially hide
+    part_hide: {
+      enabled: false,
+      shrinked_width: '32px',
+      expands_onhover: true,
+      shrinks_onleave: true,
+    }
   }
 };
 
@@ -42,6 +49,8 @@ const sidebarHeader = document.getElementById('sidebar-header');
 let sidebarButton;
 let isSidebarOpen = false;
 
+const sidebar_height = float_mode.config.part_hide.enabled ? '100%' : float_mode.config.height;
+
 const style_classic = `
   #sidebar-box { display: inherit; }
   #sidebar-box + #sidebar-splitter { display: inherit; }
@@ -50,9 +59,13 @@ const style_classic = `
 `;
 
 const style_float = () => `
+  ${ float_mode.config.part_hide.enabled
+    ? `#appcontent { margin-right: ${float_mode.config.part_hide.shrinked_width }}`
+    : ''
+  }
   #sidebar-splitter { display: none; }
   #sidebar-header { width: 100% !important; }
-  ${ float_mode.config.height != '100%' ? `
+  ${ sidebar_height != '100%' ? `
     #sidebar-box, #sidebar-box #sidebar {
       border-bottom-${float_mode.config.position == 'right' ? 'left' : 'right'}-radius: 4px;
     }
@@ -60,6 +73,7 @@ const style_float = () => `
   #sidebar-box {
     --sidebar-width: ${float_mode.config.width};
     --sidebar-height: calc(${float_mode.config.height} - ${window.innerHeight - browser.clientHeight}px);
+    --sidebar-offset-right: ${float_mode.config.part_hide.shrinked_width};
     transition: all ${float_mode.config.speed}s ease-in-out;
     position: absolute;
     display: block;
@@ -84,10 +98,15 @@ const style_float = () => `
   #sidebar-box.hide {
     box-shadow: none;
     ${ float_mode.config.slide
-      ? `${float_mode.config.position}: calc(var(--sidebar-width) * -1);`
+      ? `--placement-offset: calc(var(--sidebar-width) * -1);
+        ${float_mode.config.position}:
+          ${float_mode.config.part_hide.enabled
+            ? `calc(var(--placement-offset) + ${float_mode.config.part_hide.shrinked_width});`
+            : 'var(--placement-offset);'
+        }`
       : 'display: none;'
     }
-    ${ float_mode.config.fade &&
+    ${ float_mode.config.fade && !float_mode.config.part_hide.enabled &&
       'opacity: 0;'
     }
   }
@@ -166,6 +185,22 @@ if (shortcut.enabled) {
   if (shortcut.auto_close) {
     sidebar.onclick = function(e) {
       if (e[shortcut.modifier + 'Key']) hideSidebar();
+    }
+  }
+}
+
+if (float_mode.config.part_hide.enabled) {
+  sidebarBox.onmouseenter = function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    showSidebar();
+  };
+
+  if (float_mode.config.part_hide.shrinks_onleave) {
+    sidebarBox.onmouseleave = function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      hideSidebar();
     }
   }
 }
